@@ -1,4 +1,5 @@
 Group by
+
 ●         Conta gli ospiti raggruppandoli per anno di nascita
 SELECT COUNT(`id`) AS 'Numero_Opsiti',
 YEAR(`date_of_birth`) AS 'Anno_di_Nascita'
@@ -22,20 +23,19 @@ ORDER BY COUNT(`id`) DESC
 LIMIT 5
 
 ●         Quante prenotazioni ha fatto l’ospite che ha fatto più prenotazioni?
-SELECT COUNT(`id`) AS 'Totale_prenotazioni',
-`name`,
-`lastname`,
+SELECT COUNT(`prenotazione_id`) AS 'Totale_prenotazioni',
 `ospite_id`
-FROM `paganti`
-WHERE `ospite_id` IS NOT NULL
-GROUP BY `ospite_id`, `name`, `lastname`
-ORDER BY COUNT(`id`) DESC
+FROM `prenotazioni_has_ospiti`
+GROUP BY `ospite_id`
+ORDER BY COUNT(`prenotazione_id`) DESC
 LIMIT 1
 
 
-
 Join
+
+
 ●         Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+
 ●         Stampare tutti gli ospiti per ogni prenotazione
 ●         Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
 ●         Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
